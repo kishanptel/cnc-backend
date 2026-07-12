@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
             adminSeeded = true;
         }
 
-        return app(req, res);
+        return app(req, res)
     } catch (err) {
         console.error(err);
         res.status(500).json({
