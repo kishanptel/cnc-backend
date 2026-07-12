@@ -2,19 +2,19 @@ const path = require("path");
 const sendEmail = require("./sendMail");
 
 async function sendWelcomeEmail(to, name) {
-    const subject = `Welcome to Sweet Shop, ${name}! 🍫`;
+    const subject = `Welcome to Cacao & Crumb, ${name}! 🍫`;
 
     // Plain text fallback for email clients that do not support HTML
     const text = `Hi ${name},\n\n` +
-        `Welcome to Sweet Shop! We are absolutely thrilled to welcome you to our family.\n\n` +
-        `At Sweet Shop, we believe that life is sweeter when celebrated with premium, handcrafted treats. Our master bakers work around the clock using the finest organic ingredients to create cakes and desserts that make every moment unforgettable.\n\n` +
+        `Welcome to Cacao & Crumb! We are absolutely thrilled to welcome you to our family.\n\n` +
+        `At Cacao & Crumb, we believe that life is sweeter when celebrated with premium, handcrafted treats. Our master bakers work around the clock using the finest organic ingredients to create cakes and desserts that make every moment unforgettable.\n\n` +
         `Here is a summary of your account details:\n` +
         `- Registered Email: ${to}\n` +
         `- Store Location: Plot No. 45, XYZ, Surat - 666777\n` +
         `- Contact Support: info@sweetshop.in\n\n` +
         `Explore our Cakes Catalog to start planning your next celebration.\n\n` +
         `Baked with love,\n` +
-        `The Sweet Shop Team`;
+        `The Cacao & Crumb Team`;
 
     // Responsive HTML Email Template styled in the premium dark chocolate and cream theme
     const html = `
@@ -23,7 +23,7 @@ async function sendWelcomeEmail(to, name) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Welcome to Sweet Shop</title>
+        <title>Welcome to Cacao & Crumb</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -224,8 +224,8 @@ async function sendWelcomeEmail(to, name) {
                 <!-- Header -->
                 <div class="header" style="background-color: #3d2314;">
                     <!-- Embedded logo CID for universal email client visibility -->
-                    <img src="cid:sweet_shop_logo" alt="Sweet Shop Logo" style="height: 64px; width: 64px; border-radius: 50%; object-fit: cover; background-color: #ffffff; border: 2px solid #ede2d1; margin-bottom: 12px; display: inline-block; padding: 2px;" />
-                    <h1 class="logo-text" style="margin: 0 0 6px; font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 24px; font-weight: 800; color: #ffffff;">Sweet Shop</h1>
+                    <img src="cid:sweet_shop_logo" alt="Cacao & Crumb Logo" style="height: 64px; width: 64px; border-radius: 50%; object-fit: cover; background-color: #ffffff; border: 2px solid #ede2d1; margin-bottom: 12px; display: inline-block; padding: 2px;" />
+                    <h1 class="logo-text" style="margin: 0 0 6px; font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 24px; font-weight: 800; color: #ffffff;">Cacao & Crumb</h1>
                     <p class="header-subtitle" style="font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; font-weight: 600; color: rgba(237, 226, 209, 0.85); margin: 0;">Makers of Happiness Since 1991</p>
                 </div>
                 
@@ -233,7 +233,7 @@ async function sendWelcomeEmail(to, name) {
                 <div class="body-content" style="background-color: #ffffff; padding: 40px 30px 15px;">
                     <h2 class="greeting" style="font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 20px; font-weight: 800; color: #3d2314; margin: 0 0 16px;">Hi ${name},</h2>
                     <p class="paragraph" style="font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 15px; line-height: 1.65; color: rgba(10, 10, 10, 0.78); margin: 0 0 24px;">
-                        We are absolutely thrilled to welcome you to our family! At Sweet Shop, we believe that life is sweeter when celebrated with premium, handcrafted treats. Our master bakers work around the clock using the finest organic ingredients to create cakes and desserts that make every celebration unforgettable.
+                        We are absolutely thrilled to welcome you to our family! At Cacao & Crumb, we believe that life is sweeter when celebrated with premium, handcrafted treats. Our master bakers work around the clock using the finest organic ingredients to create cakes and desserts that make every celebration unforgettable.
                     </p>
                     
                     <!-- Details Info Box -->
@@ -276,7 +276,7 @@ async function sendWelcomeEmail(to, name) {
                         Tel: +91 XXXXXXXXXX
                     </p>
                     <p class="footer-text" style="font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; margin: 0;">
-                        &copy; 2026 Sweet Shop. All rights reserved.
+                        &copy; 2026 Cacao & Crumb. All rights reserved.
                     </p>
                 </div>
             </div>
