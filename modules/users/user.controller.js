@@ -23,7 +23,8 @@ const UserRegister = async (req, res) => {
             const profile = await new Promise((resolve, reject) => {
                 const stream = cloudinary.uploader.upload_stream(
                     {
-                        folder: "user_profile"
+                        folder: "user_profile",
+                        public_id: `${Date.now()}`
                     },
                     (error, result) => {
                         if (error) {
@@ -167,7 +168,7 @@ const CreateNewAdmin = async (req, res) => {
             name,
             email,
             password,
-            profile: "https://sweetshop-frontend-orcin.vercel.app//sweet_shop_logo.png",
+            profile: "https://sweetshop-frontend-orcin.vercel.app/sweet_shop_logo.png",
             isAdmin: true
         })
 
