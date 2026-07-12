@@ -29,6 +29,7 @@
     "morgan": "^1.11.0",
     "multer": "^2.2.0",
     "nodemailer": "^9.0.1",
+    "streamifier": "^0.1.1",
     "vercel": "^55.0.0"
   }
 }

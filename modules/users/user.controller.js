@@ -1,6 +1,6 @@
 const UserModel = require("./user.model")
 const cloudinary = require("../../config/cloudinary.js")
-const fs = require("fs")
+const streamifier = require("streamifier")
 const sendWelcomeEmail = require("../../services/sendWelcomeEmail")
 
 const UserRegister = async (req, res) => {
@@ -20,12 +20,24 @@ const UserRegister = async (req, res) => {
         let profileUrl = "/sweet_shop_logo.png"
 
         if (req.file) {
-            const profile = await cloudinary.uploader.upload(req.file.path, {
-                folder: "user_profile",
-                public_id: req.file.filename
-            })
-            fs.unlinkSync(req.file.path)
-            profileUrl = profile.secure_url
+            const profile = await new Promise((resolve, reject) => {
+                const stream = cloudinary.uploader.upload_stream(
+                    {
+                        folder: "user_profile"
+                    },
+                    (error, result) => {
+                        if (error) {
+                            reject(error);
+                        } else {
+                            resolve(result);
+                        }
+                    }
+                );
+
+                streamifier.createReadStream(req.file.buffer).pipe(stream);
+            });
+
+            profileUrl = profile.secure_url;
         }
 
         const newUser = new UserModel({
@@ -155,7 +167,7 @@ const CreateNewAdmin = async (req, res) => {
             name,
             email,
             password,
-            profile: "/sweet_shop_logo.png",
+            profile: "https://sweetshop-frontend-orcin.vercel.app//sweet_shop_logo.png",
             isAdmin: true
         })
 
