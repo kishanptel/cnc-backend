@@ -169,7 +169,7 @@ const CreateNewAdmin = async (req, res) => {
             name,
             email,
             password,
-            profile: "https://sweetshop-frontend-orcin.vercel.app/sweet_shop_logo.png",
+            profile: "https://cnc-frontend-sage.vercel.app/sweet_shop_logo.png",
             isAdmin: true
         })
 
