@@ -1,0 +1,50 @@
+const express = require("express")
+const morgan = require("morgan")
+const helmet = require("helmet")
+const cors = require("cors")
+const compression = require("compression")
+const app = express()
+
+const UserRoute = require("../modules/users/user.route.js")
+const ContactRoute = require("../modules/contacts/contact.route.js")
+const OrderRoute = require("../modules/orders/order.route.js")
+const { default: rateLimit } = require("express-rate-limit")
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(helmet())
+app.use(compression())
+app.use(morgan('dev'))
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes in milliseconds
+    limit: 100, // Limit each IP to 100 requests per `window`
+    // message: 'Too many requests, please try again later.',
+    // statusCode: 429 // HTTP status to return on limit
+})
+
+app.use(limiter)
+
+const allowedOrigins = [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost:5175",
+    "http://localhost:5176"
+]
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    },
+    credentials: true
+}))
+
+app.use("/users", UserRoute)
+app.use("/contacts", ContactRoute)
+app.use("/orders", OrderRoute)
+
+module.exports = app

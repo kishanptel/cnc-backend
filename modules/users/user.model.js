@@ -1,0 +1,24 @@
+const mongoose = require("mongoose")
+const bcrypt = require("bcrypt")
+
+const UserSchema = new mongoose.Schema({
+    profile: { type: "String", require: true },
+    name: { type: "String", require: true },
+    email: { type: "String", require: true },
+    password: { type: "String", require: true },
+    isAdmin: { type: "Boolean", default: false }
+}, { versionKey: false, timestamps: true })
+
+UserSchema.pre("save", async function () {
+    if (this.isModified("password")) {
+        this.password = await bcrypt.hash(this.password, 10)
+    }
+})
+
+UserSchema.methods.comparePassword = async function (password) {
+    return await bcrypt.compare(password, this.password)
+}
+
+const UserModel = mongoose.model("users", UserSchema)
+
+module.exports = UserModel
