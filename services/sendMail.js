@@ -2,7 +2,7 @@ const { EMAIL } = require("../config/config")
 const transporter = require("../config/mail")
 
 
-async function sendEmail(to, subject, text, html) {
+async function sendEmail(to, subject, text, html, attachments = []) {
     try {
         const info = await transporter.sendMail({
             from: EMAIL,
@@ -11,7 +11,8 @@ async function sendEmail(to, subject, text, html) {
             bcc: [],
             subject,
             text,
-            html
+            html,
+            attachments
         })
 
         return true

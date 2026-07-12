@@ -1,3 +1,4 @@
+const path = require("path");
 const sendEmail = require("./sendMail");
 
 async function sendWelcomeEmail(to, name) {
@@ -222,8 +223,8 @@ async function sendWelcomeEmail(to, name) {
             <div class="container" style="font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; background-color: #ffffff;">
                 <!-- Header -->
                 <div class="header" style="background-color: #3d2314;">
-                    <!-- Cloudinary hosted logo CDN for universal email client visibility -->
-                    <img src="https://res.cloudinary.com/dqfvzeqvz/image/upload/v1782715534/sweet_shop_assets/logo.jpg" alt="Sweet Shop Logo" style="height: 64px; width: 64px; border-radius: 50%; object-fit: cover; background-color: #ffffff; border: 2px solid #ede2d1; margin-bottom: 12px; display: inline-block; padding: 2px;" />
+                    <!-- Embedded logo CID for universal email client visibility -->
+                    <img src="cid:sweet_shop_logo" alt="Sweet Shop Logo" style="height: 64px; width: 64px; border-radius: 50%; object-fit: cover; background-color: #ffffff; border: 2px solid #ede2d1; margin-bottom: 12px; display: inline-block; padding: 2px;" />
                     <h1 class="logo-text" style="margin: 0 0 6px; font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 24px; font-weight: 800; color: #ffffff;">Sweet Shop</h1>
                     <p class="header-subtitle" style="font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; font-weight: 600; color: rgba(237, 226, 209, 0.85); margin: 0;">Makers of Happiness Since 1991</p>
                 </div>
@@ -284,7 +285,13 @@ async function sendWelcomeEmail(to, name) {
     </html>
     `;
 
-    return await sendEmail(to, subject, text, html);
+    const attachments = [{
+        filename: 'sweet_shop_logo.png',
+        path: path.join(__dirname, 'sweet_shop_logo.png'),
+        cid: 'sweet_shop_logo'
+    }];
+
+    return await sendEmail(to, subject, text, html, attachments);
 }
 
 module.exports = sendWelcomeEmail
