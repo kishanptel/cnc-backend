@@ -27,7 +27,7 @@ app.use(limiter)
 
 const allowedOrigins = [
     "http://localhost:5173",
-    "https://sweetshop-frontend-orcin.vercel.app/"
+    "https://sweetshop-frontend-orcin.vercel.app"
 ]
 
 app.use(cors({
