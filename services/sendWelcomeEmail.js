@@ -11,7 +11,7 @@ async function sendWelcomeEmail(to, name) {
         `Here is a summary of your account details:\n` +
         `- Registered Email: ${to}\n` +
         `- Store Location: Plot No. 45, XYZ, Surat - 666777\n` +
-        `- Contact Support: info@sweetshop.in\n\n` +
+        `- Contact Support: info@cacao&crumb.in\n\n` +
         `Explore our Cakes Catalog to start planning your next celebration.\n\n` +
         `Baked with love,\n` +
         `The Cacao & Crumb Team`;
@@ -266,7 +266,7 @@ async function sendWelcomeEmail(to, name) {
                 <!-- Footer -->
                 <div class="footer" style="text-align: center; padding: 20px 30px 30px; background-color: #fcfaf7; border-top: 1px solid rgba(61, 35, 20, 0.06); font-size: 12px; line-height: 1.6; color: rgba(10, 10, 10, 0.55);">
                     <p class="footer-text" style="font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; margin: 0 0 8px;">
-                        Questions? Reach out to our bakers at <a href="mailto:info@sweetshop.in" style="color: #3d2314; text-decoration: none; font-weight: 600;">info@sweetshop.in</a>
+                        Questions? Reach out to our bakers at <a href="mailto:info@sweetshop.in" style="color: #3d2314; text-decoration: none; font-weight: 600;">info@cacao&crumb.in</a>
                     </p>
                     <!-- Split phone address layout to optimize rendering on mobile phone layout -->
                     <p class="footer-text" style="font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; margin: 0 0 4px;">
