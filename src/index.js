@@ -18,10 +18,10 @@ module.exports = async (req, res) => {
             if (!adminExist) {
                 await UserModel.create({
                     name: "Admin",
-                    email: "admin@sweetshop.in",
+                    email: "admin@cacaoncrumb.com",
                     password: "admin123",
                     isAdmin: true,
-                    profile: "/sweet_shop_logo.png"
+                    profile: "/cacaoncrumb_logo.png"
                 });
 
                 console.log("Admin account seeded.");

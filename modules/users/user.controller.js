@@ -17,7 +17,7 @@ const UserRegister = async (req, res) => {
             return res.status(400).json({ message: "User already exists with this email address." });
         }
 
-        let profileUrl = "/sweet_shop_logo.png"
+        let profileUrl = "/cacaoncrumb_logo.png"
 
         if (req.file) {
             const profile = await new Promise((resolve, reject) => {
@@ -193,7 +193,7 @@ const CreateNewAdmin = async (req, res) => {
             name,
             email,
             password,
-            profile: "https://cnc-frontend-sage.vercel.app/sweet_shop_logo.png",
+            profile: "https://cnc-frontend-sage.vercel.app/cacaoncrumb_logo.png",
             isAdmin: true
         })
 
